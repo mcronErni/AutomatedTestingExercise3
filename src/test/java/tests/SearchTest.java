@@ -8,7 +8,7 @@ import pages.LoginPage;
 
 public class SearchTest extends MainTest {
     @Test
-    public void testSearchFunction(){
+    public void testSearchFunction() throws InterruptedException {
         driver.get("https://petstore.octoperf.com/");
         LoginPage loginPage = new LoginPage(driver, wait);
         loginPage.login("trialacc","trialacc");
@@ -16,5 +16,6 @@ public class SearchTest extends MainTest {
         CatalogPage catalogPage = new CatalogPage(driver, wait);
         catalogPage.searchItem("dog");
         assertTrue(catalogPage.checkSearchResults().equals("Bulldog"));
+        Thread.sleep(3000);
     }
 }

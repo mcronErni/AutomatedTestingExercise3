@@ -11,7 +11,7 @@ import pages.LoginPage;
 public class SignOutTest extends MainTest {
 
     @Test
-    public void testSignOut(){
+    public void testSignOut() throws InterruptedException {
         driver.get("https://petstore.octoperf.com/");
 
         LoginPage loginPage = new LoginPage(driver, wait);
@@ -19,7 +19,8 @@ public class SignOutTest extends MainTest {
 
         CatalogPage catalogPage = new CatalogPage(driver, wait);
         catalogPage.clickSignOut();
-        assertTrue(catalogPage.checkWelcomeMessage().equals(""));
+        assertTrue(catalogPage.checkWelcomeMessage().isEmpty());
+        Thread.sleep(3000);
 
     }
 
